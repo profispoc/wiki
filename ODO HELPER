@@ -1,0 +1,35 @@
+# скачиваем скрипт
+wget -O - https://gitlab.com/katyukha/odoo-helper-scripts/raw/master/install-system.bash | sudo bash -s
+
+# устанавливаем зависимости
+odoo-helper install pre-requirements
+# создаем ставим пользака постгреса
+odoo-helper install postgres odoo odoo
+
+# переходим по пути куда хотим ставить одо и ставим одо
+odoo-helper install sys-deps 15.0
+odoo-install --odoo-version 15.0
+
+# переходим по пути куда хотим ставить одо и ставим одо
+odoo-helper install sys-deps 14.0
+odoo-install --odoo-version 14.0
+
+# переходим по пути куда хотим ставить одо и ставим одо
+odoo-helper install sys-deps 13.0
+odoo-install --odoo-version 13.0
+
+
+Если хотим несколько одо на 1 машине
+
+odoo/odoo/tools/config.py #тут можно поменять порт http
+group.add_option("--xmlrpc-port", dest="xmlrpc_port", my_default= 8069 ,
+
+odoo-helper postgres user-create odoo13 odoo13 #и прописать в конфиге нового пользака
+
+nano /odoo/odo.conf
+
+Полезное 
+odoo-helper server start
+odoo-helper server restart
+odoo-helper server stop
+
